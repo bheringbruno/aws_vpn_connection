@@ -1,8 +1,13 @@
 resource "aws_vpn_connection" "main" {
 
+  depends_on = [
+    aws_vpn_gateway.vpn_gateway,
+    aws_customer_gateway.customer_gateway
+  ]
+
   vpn_gateway_id      = aws_vpn_gateway.vpn_gateway.id
   customer_gateway_id = aws_customer_gateway.customer_gateway.id
-  type                = aws_customer_gateway.customer_gateway.customer_gateway_type
+  type                = aws_customer_gateway.customer_gateway.type
 
   local_ipv4_network_cidr = var.local_ipv4_network_cidr
   remote_ipv4_network_cidr = var.remote_ipv4_network_cidr

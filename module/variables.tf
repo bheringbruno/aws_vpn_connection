@@ -33,12 +33,14 @@ variable "remote_ipv4_network_cidr" {
 
 variable "tunnel1_ike_versions" {
   description = "The Tunel1 IKE version"
-  default = "ikev1"
+  type = list(string)
+  default = ["ikev1"]
 }
 
 variable "tunnel2_ike_versions" {
-  description = "The Tunel1 IKE version"
-  default = "ikev1"
+  description = "The Tunel2 IKE version"
+  type = list(string)
+  default = ["ikev1"]
 }
 
 variable "tunnel1_lifetime_sec" {
@@ -53,70 +55,84 @@ variable "tunnel2_lifetime_sec" {
 
 variable "tunnel1_phase1_encryption_algorithms" {
   description = "Valid values are: AES128 | AES256 | AES128-GCM-16 | AES256-GCM-16."
-  default = "AES256" 
+  type = list(string)
+  default = ["AES256"] 
 }
 
 variable "tunnel1_phase2_encryption_algorithms" {
   description = "Valid values are: AES128 | AES256 | AES128-GCM-16 | AES256-GCM-16."
-  default = "AES256" 
+  type = list(string)
+  default = ["AES256"] 
 }
 
 variable "tunnel2_phase1_encryption_algorithms" {
   description = "Valid values are: AES128 | AES256 | AES128-GCM-16 | AES256-GCM-16."
-  default = "AES256" 
+  type = list(string)
+  default = ["AES256"] 
 }
 
 variable "tunnel2_phase2_encryption_algorithms" {
   description = "Valid values are: AES128 | AES256 | AES128-GCM-16 | AES256-GCM-16."
-  default = "AES256" 
+  type = list(string)
+  default = ["AES256"] 
 }
 
 variable "tunnel1_phase1_integrity_algorithms" {
   description = "Valid values are: SHA1 | SHA2-256 | SHA2-384 | SHA2-512."
-  default = "SHA2-256" 
+  type = list(string)
+  default = ["SHA2-256"]
 }
 
 variable "tunnel1_phase2_integrity_algorithms" {
   description = "Valid values are: SHA1 | SHA2-256 | SHA2-384 | SHA2-512."
-  default = "SHA2-256" 
+  type = list(string)
+  default = ["SHA2-256"]
 }
 
 variable "tunnel2_phase1_integrity_algorithms" {
   description = "Valid values are: SHA1 | SHA2-256 | SHA2-384 | SHA2-512."
-  default = "SHA2-256" 
+  type = list(string)
+  default = ["SHA2-256"]
 }
 
 variable "tunnel2_phase2_integrity_algorithms" {
   description = "Valid values are: SHA1 | SHA2-256 | SHA2-384 | SHA2-512."
-  default = "SHA2-256" 
+  type = list(string)
+  default = ["SHA2-256"]
 }
 
 variable "tunnel1_phase1_dh_group_numbers" {
   description = "Valid values are: 2 | 5 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24."
-  default = null 
+  type = list(number)
+  default = [] 
 }
 
 variable "tunnel1_phase2_dh_group_numbers" {
   description = "Valid values are: 2 | 5 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24."
-  default = null 
+  type = list(number)
+  default = [] 
 }
 
 variable "tunnel2_phase1_dh_group_numbers" {
   description = "Valid values are: 2 | 5 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24."
-  default = null 
+  type = list(number)
+  default = []
 }
 
 variable "tunnel2_phase2_dh_group_numbers" {
   description = "Valid values are: 2 | 5 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24."
-  default = null 
+  type = list(number)
+  default = [] 
 }
 
 variable "tunnel1_preshared_key" {
+  type = string
   default = ""
   sensitive   = true
 }
 
 variable "tunnel2_preshared_key" {
+  type = string
   default = ""
   sensitive   = true
 }
